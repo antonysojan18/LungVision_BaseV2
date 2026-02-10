@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env
+.flaskenv
+*.pkl
+*.png
+*.csv
+# Exceptions for large files if you want to track them, but normally they are ignored
+!doctors_database.csv
+!cancer\ patient\ datasets.csv
+!hospital_records.csv
+!patient_registry.csv
+!lung_cancer_model.pkl
+!lungvision_ensemble_model.pkl
+!lungvision_model_final.pkl

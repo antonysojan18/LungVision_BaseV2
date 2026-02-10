@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LungVision AI | Advanced Pulmonary Diagnostics</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #0077b6;
+            --bg-light: #f8fbff;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --accent: #ef476f;
+            --safe: #06d6a0;
+            --text-dark: #1a1a2e;
+            --text-muted: #64748b;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #e0f2fe 0%, #f8fbff 100%);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .outfit {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+        }
+
+        /* Cinematic Background Elements */
+        .bg-blob {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .navbar {
+            background: rgba(0, 180, 216, 0.6) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+        }
+
+        .care-logo {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 16px rgba(0, 180, 216, 0.2);
+            color: white;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .diag-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(0, 180, 216, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diag-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .form-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .form-control,
+        .form-select {
+            background: white;
+            border: 1px solid #e2e8f0;
+            color: var(--text-dark);
+            border-radius: 12px;
+            padding: 0.8rem 1.25rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .feature-grid-item {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(0, 180, 216, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-grid-item:hover {
+            background: white;
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.05);
+            border-color: var(--primary);
+        }
+
+        .btn-run {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            color: white;
+            padding: 1.25rem;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.2);
+        }
+
+        .btn-run:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 180, 216, 0.3);
+            color: white;
+        }
+
+        .smoke-toggle-group .btn-check:checked+label {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 8px 16px rgba(0, 180, 216, 0.2);
+        }
+
+        .btn-outline-primary {
+            border-color: rgba(0, 180, 216, 0.2);
+            color: var(--primary);
+            border-radius: 12px;
+            padding: 1rem;
+            font-weight: 600;
+        }
+
+        .badge-premium {
+            background: rgba(0, 180, 216, 0.08);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-blob" style="top: -10%; right: -10%;"></div>
+    <div class="bg-blob"
+        style="bottom: -10%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(239, 71, 111, 0.03) 0%, transparent 70%);">
+    </div>
+
+    <nav class="navbar sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h4 class="m-0 fw-bold outfit">LungVision AI</h4>
+                    <span class="text-muted small opacity-75">Advanced Lung Cancer Risk Engine</span>
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                <button onclick="openChat()"
+                    class="btn btn-primary rounded-pill px-4 shadow-sm animate__animated animate__fadeIn">
+                    <i class="bi bi-headset me-2"></i>Support
+                </button>
+                <a href="/reset" class="btn btn-outline-secondary rounded-pill px-3">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-xl-9">
+                <div class="diag-card animate__animated animate__fadeInUp">
+                    <div class="row mb-5 align-items-center">
+                        <div class="col-md-8">
+                            <span class="badge-premium mb-3 d-inline-block">Model 2.5 Active</span>
+                            <h2 class="outfit fw-bold display-6 mb-2">New Diagnostic Session</h2>
+                            <p class="text-muted">Fill in the clinical indicators below to generate an AI-powered risk
+                                assessment.</p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <i class="bi bi-shield-check text-primary fs-1 opacity-25"></i>
+                        </div>
+                    </div>
+
+                    <form action="/" method="POST">
+                        <h6 class="form-label mb-4"><i class="bi bi-person-lines-fill me-2"></i>Patient Profile</h6>
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6">
+                                <label class="small text-muted mb-2 fw-semibold">Patient Full Name</label>
+                                <input type="text" name="patient_name" class="form-control" placeholder="e.g. Antony"
+                                    required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="small text-muted mb-2 fw-semibold">Age</label>
+                                <input type="number" name="Age" class="form-control" value="45" min="10" max="100">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="small text-muted mb-2 fw-semibold">Gender</label>
+                                <select name="Gender" class="form-select">
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h6 class="form-label mb-4"><i class="bi bi-lungs me-2"></i>Smoking Factor Analysis</h6>
+                        <div class="bg-light-blue p-4 rounded-4 mb-5"
+                            style="background: rgba(0, 180, 216, 0.03); border: 1px solid rgba(0, 180, 216, 0.05);">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <p class="m-0 fw-semibold">Does the patient have a history of smoking?</p>
+                                    <small class="text-muted">Includes current and past tobacco usage.</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row g-2 smoke-toggle-group">
+                                        <div class="col-6">
+                                            <input type="radio" class="btn-check" name="is_smoker" id="smoke_no"
+                                                value="no" checked onclick="toggleSmoke(false)">
+                                            <label class="btn btn-outline-primary w-100" for="smoke_no">No</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="radio" class="btn-check" name="is_smoker" id="smoke_yes"
+                                                value="yes" onclick="toggleSmoke(true)">
+                                            <label class="btn btn-outline-primary w-100" for="smoke_yes">Yes</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="smoke-area" style="display:none;"
+                                class="mt-4 pt-4 border-top animate__animated animate__fadeIn">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <label class="form-label d-flex justify-content-between mb-3">
+                                            <span>Smoking Intensity</span>
+                                            <span class="text-primary fw-bold" id="smoke-badge">1</span>
+                                        </label>
+                                        <input type="range" name="Smoking" min="1" max="9" value="1" class="form-range"
+                                            oninput="document.getElementById('smoke-badge').innerText = this.value">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="small text-muted mb-2 fw-semibold">Years of Smoking</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-white border-end-0"><i
+                                                    class="bi bi-clock-history"></i></span>
+                                            <input type="number" name="years_smoking"
+                                                class="form-control border-start-0" placeholder="0" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h6 class="form-label mb-4"><i class="bi bi-activity me-2"></i>Clinical Symptoms & Risk Markers
+                        </h6>
+                        <div class="row g-3">
+                            {% for feature in features %}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="feature-grid-item h-100">
+                                    <label class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="small fw-bold text-dark opacity-75">{{ feature }}</span>
+                                        <span class="badge rounded-pill bg-white border text-primary px-2"
+                                            style="font-size: 0.65rem;">1</span>
+                                    </label>
+                                    <input type="range" class="form-range" name="{{ feature }}" min="1" max="9"
+                                        value="1"
+                                        oninput="this.previousElementSibling.lastElementChild.innerText = this.value">
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mt-5 pt-3">
+                            <button type="submit" class="btn-run w-100">
+                                <i class="bi bi-cpu-fill me-2"></i> Run Diagnostic Analysis
+                            </button>
+                            <p class="text-center mt-3 text-muted small">
+                                <i class="bi bi-info-circle me-1"></i> Data is encrypted and processed using LungVision
+                                Model 2.5
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSmoke(yes) {
+            const area = document.getElementById('smoke-area');
+            if (yes) {
+                area.style.display = 'block';
+            } else {
+                area.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Chatbot Widget -->
+    {% include 'chatbot.html' %}
+
+</body>
+
+</html>

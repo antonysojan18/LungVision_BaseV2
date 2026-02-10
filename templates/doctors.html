@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialist Network | LungVision AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #0077b6;
+            --bg-light: #f0f7ff;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --text-dark: #1a1a2e;
+            --card-shadow: 0 15px 35px rgba(0, 180, 216, 0.1);
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #e0f2fe 0%, #f0f7ff 100%);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .outfit {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .doctor-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            position: relative;
+            box-shadow: var(--card-shadow);
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 180, 216, 0.2);
+            border-color: var(--primary);
+        }
+
+        .doctor-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .doctor-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .doctor-card:hover .doctor-img {
+            transform: scale(1.05);
+        }
+
+        .verified-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .specialty-tag {
+            background: rgba(0, 180, 216, 0.1);
+            color: var(--secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item i {
+            width: 20px;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            width: 100%;
+            transition: 0.3s;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.3);
+            color: white;
+        }
+
+        /* Tabs styling if needed, but grid is cleaner for this */
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar sticky-top py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h5 class="m-0 fw-bold outfit">Specialist Network</h5>
+                    <span class="text-muted small">LungVision Direct Care</span>
+                </div>
+            </div>
+            <a href="/results" class="btn btn-outline-secondary rounded-pill px-4 btn-sm">Back to Analysis</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5 mb-5">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-8 animate__animated animate__fadeInLeft">
+                <span class="badge rounded-pill bg-white border text-primary px-3 py-2 mb-3 shadow-sm">VERIFIED
+                    PARTNERS</span>
+                <h2 class="outfit fw-bold display-5 mb-2">Select a Specialist</h2>
+                <p class="text-muted lead">Top-rated pulmonologists and oncologists available for immediate
+                    consultation.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end animate__animated animate__fadeInRight">
+                <div class="d-flex gap-2 justify-content-end">
+                    <div class="d-inline-flex align-items-center bg-white p-2 rounded-4 shadow-sm border">
+                        <i class="bi bi-geo-alt-fill text-primary ms-3"></i>
+                        <select id="cityFilter" class="form-select border-0 bg-transparent fw-bold"
+                            style="width: 150px; box-shadow: none;">
+                            <option value="all">All Locations</option>
+                        </select>
+                    </div>
+                    <div class="d-inline-flex align-items-center bg-white p-2 rounded-4 shadow-sm border">
+                        <i class="bi bi-sort-down text-primary ms-3"></i>
+                        <select id="sortFilter" class="form-select border-0 bg-transparent fw-bold"
+                            style="width: 150px; box-shadow: none;">
+                            <option value="default">Default</option>
+                            <option value="rating_desc">Rating (High to Low)</option>
+                            <option value="rating_asc">Rating (Low to High)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4" id="doctorsGrid">
+            {% for doc in doctors %}
+            <div class="col-md-6 col-lg-4 doc-item animate__animated animate__fadeInUp" data-city="{{ doc.Location }}"
+                data-rating="{{ doc.Rating }}" style="animation-delay: {{ loop.index0 * 100 }}ms;">
+                <div class="doctor-card">
+                    <div class="doctor-img-wrapper">
+                        <img src="{{ doc.ImageURL }}" class="doctor-img" alt="{{ doc.Name }}">
+                        <div class="verified-badge">
+                            <i class="bi bi-patch-check-fill"></i> Verified
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <span class="specialty-tag">{{ doc.Specialty }}</span>
+                        <h4 class="outfit fw-bold mb-2">{{ doc.Name }}</h4>
+
+                        <div class="mb-4">
+                            <div class="meta-item">
+                                <i class="bi bi-hospital"></i> {{ doc.Hospital }}
+                            </div>
+                            <div class="meta-item">
+                                <i class="bi bi-geo-alt"></i> {{ doc.Location }}
+                            </div>
+                            <div class="meta-item text-warning">
+                                <i class="bi bi-star-fill"></i> <strong>{{ doc.Rating }}</strong>/5.0 Rating
+                            </div>
+                        </div>
+
+                        <a href="/book/{{ doc.ID }}" class="btn btn-book">
+                            Book Appointment <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id="noResults" class="text-center py-5 d-none">
+            <div class="bg-light rounded-circle d-inline-flex p-4 mb-3">
+                <i class="bi bi-geo-alt text-muted fs-1"></i>
+            </div>
+            <h4 class="fw-bold text-muted">No specialists found in this area.</h4>
+            <p class="text-muted">Try selecting a different location or "All Locations".</p>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    {% include 'chatbot.html' %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cityFilter = document.getElementById('cityFilter');
+            const sortFilter = document.getElementById('sortFilter');
+            const doctorsGrid = document.getElementById('doctorsGrid');
+            const cities = new Set();
+
+            // Extract unique cities
+            const docItems = Array.from(document.querySelectorAll('.doc-item'));
+            docItems.forEach(item => {
+                const city = item.getAttribute('data-city');
+                if (city) cities.add(city);
+            });
+
+            // Populate dropdown
+            Array.from(cities).sort().forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                cityFilter.appendChild(option);
+            });
+
+            function filterAndSort() {
+                const selectedCity = cityFilter.value;
+                const selectedSort = sortFilter.value;
+                let visibleCount = 0;
+
+                // 1. Filter
+                const filteredItems = docItems.filter(item => {
+                    const itemCity = item.getAttribute('data-city');
+                    const isVisible = (selectedCity === 'all' || itemCity === selectedCity);
+                    if (isVisible) {
+                        item.classList.remove('d-none');
+                        item.classList.add('animate__fadeInUp');
+                        visibleCount++;
+                    } else {
+                        item.classList.add('d-none');
+                        item.classList.remove('animate__fadeInUp');
+                    }
+                    return isVisible;
+                });
+
+                // 2. Sort (Only operate on visible items conceptually, but we re-append all valid ones)
+                // We need to re-order the filtering results in the DOM
+                if (selectedSort !== 'default') {
+                    docItems.sort((a, b) => {
+                        const rA = parseFloat(a.getAttribute('data-rating'));
+                        const rB = parseFloat(b.getAttribute('data-rating'));
+
+                        if (selectedSort === 'rating_desc') return rB - rA;
+                        if (selectedSort === 'rating_asc') return rA - rB;
+                        return 0;
+                    });
+                }
+
+                // Re-append sorted items to grid
+                docItems.forEach(item => doctorsGrid.appendChild(item));
+
+                // Show/Hide No Results
+                const noResults = document.getElementById('noResults');
+                if (visibleCount === 0) noResults.classList.remove('d-none');
+                else noResults.classList.add('d-none');
+            }
+
+            cityFilter.addEventListener('change', filterAndSort);
+            sortFilter.addEventListener('change', filterAndSort);
+        });
+    </script>
+</body>
+
+</html>

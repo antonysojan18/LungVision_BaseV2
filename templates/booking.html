@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Appointment | LungVision AI</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #0077b6;
+            --bg-light: #f0f7ff;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --text-dark: #1a1a2e;
+            --card-shadow: 0 15px 35px rgba(0, 180, 216, 0.1);
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #e0f2fe 0%, #f0f7ff 100%);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .booking-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .doctor-side {
+            background: rgba(0, 180, 216, 0.03);
+            padding: 3.5rem;
+            border-right: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .form-side {
+            padding: 3.5rem;
+        }
+
+        .doctor-img-large {
+            width: 140px;
+            height: 140px;
+            border-radius: 28px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 15px 30px rgba(0, 180, 216, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+            color: #64748b;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid rgba(0, 180, 216, 0.1);
+            background: white;
+            transition: 0.3s;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.1);
+            border-color: var(--primary);
+        }
+
+        .btn-pay {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            color: white;
+            padding: 1.25rem;
+            border-radius: 16px;
+            font-weight: 700;
+            width: 100%;
+            margin-top: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-pay:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 180, 216, 0.4);
+            color: white;
+        }
+
+        .fee-badge {
+            background: white;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px dashed var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar sticky-top py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <div class="bg-primary bg-opacity-10 p-2 rounded-3 me-3">
+                    <i class="bi bi-calendar-check text-primary fs-4"></i>
+                </div>
+                <div>
+                    <h5 class="m-0 fw-bold outfit">Confirm Appointment</h5>
+                    <span class="text-muted small">Step 2 of 3: Scheduling</span>
+                </div>
+            </div>
+            <a href="/consult" class="btn btn-outline-secondary rounded-pill px-4 btn-sm">Change Doctor</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5 mb-5">
+        <div class="booking-card animate__animated animate__zoomIn">
+            <div class="row g-0">
+                <div class="col-lg-5 doctor-side text-center text-lg-start">
+                    <img src="{{ doctor.ImageURL }}" class="doctor-img-large" alt="{{ doctor.Name }}">
+                    <h3 class="outfit fw-bold mb-2">{{ doctor.Name }}</h3>
+                    <p class="text-primary fw-bold mb-3">{{ doctor.Specialty }}</p>
+                    <hr class="opacity-10 mb-4">
+                    <p class="text-muted small mb-4">You are booking a clinical consultation for lung health assessment.
+                        Please ensure all details are accurate.</p>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-geo-alt-fill text-muted me-2"></i>
+                        <span class="small fw-medium">{{ doctor.Hospital }}, {{ doctor.Location }}</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-wallet2 text-muted me-2"></i>
+                        <span class="small fw-bold">Consultation Fee: ₹500</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 form-side">
+                    <h4 class="outfit fw-bold mb-4">Appointment Details</h4>
+                    <form action="/payment" method="POST">
+                        <!-- Hidden inputs -->
+                        <input type="hidden" name="doc_name" value="{{ doctor.Name }}">
+                        <input type="hidden" name="hospital" value="{{ doctor.Hospital }}">
+
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Patient Name</label>
+                                <input type="text" name="patient_name" class="form-control"
+                                    value="{{ session.get('patient_data', {}).get('Name', '') }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Appointment Date</label>
+                                <input type="date" name="date" class="form-control"
+                                    value="{{ now.strftime('%Y-%m-%d') }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Preferred Time</label>
+                                <select name="time" class="form-select">
+                                    <option>09:00 AM</option>
+                                    <option>10:30 AM</option>
+                                    <option selected>12:00 PM</option>
+                                    <option>03:30 PM</option>
+                                    <option>05:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 rounded-4"
+                            style="background: rgba(0, 180, 216, 0.03); border: 1px dashed rgba(0, 180, 216, 0.2);">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0 small text-muted">A confirmation will be sent to your registered
+                                        mobile number.</p>
+                                </div>
+                                <div class="text-end">
+                                    <h5 class="m-0 fw-bold outfit">Total: <span class="text-primary">₹500</span></h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-pay">
+                            Proceed to Secure Payment <i class="bi bi-arrow-right ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    {% include 'chatbot.html' %}
+
+</body>
+
+</html>
